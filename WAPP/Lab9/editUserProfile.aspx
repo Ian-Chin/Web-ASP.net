@@ -60,7 +60,7 @@
                 </td>
                 <td style="vertical-align: top; padding-left: 40px;">
                     <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" /><br />
-                    <asp:Image ID="Image1" runat="server" Width="200px" />
+                    <asp:Image ID="Image1" runat="server" Width="211px" Height="233px" />
                 </td>
             </tr>
         </table>

@@ -24,37 +24,27 @@ namespace WAPP.Lab9
 
             if (!Page.IsPostBack)
             {
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                con.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter("select * from userTable where username = '" +
+                                                       Session["userName"] + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count == 0)
                 {
-                    con.Open();
-                    SqlDataAdapter da = new SqlDataAdapter("select * from userTable where username = @username", con);
-                    da.SelectCommand.Parameters.AddWithValue("@username", Session["userName"].ToString());
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    if (dt.Rows.Count == 0)
-                    {
-                        return;
-                    }
-
-                    DataRow row = dt.Rows[0];
-                    fname.Text = row["fname"].ToString().Trim();
-                    lname.Text = row["lname"].ToString().Trim();
-                    //select the matching item instead of overwriting the selected item's text
-                    ListItem g = gender.Items.FindByValue(row["gender"].ToString().Trim());
-                    if (g != null)
-                    {
-                        gender.ClearSelection();
-                        g.Selected = true;
-                    }
-                    country.Text = row["country"].ToString().Trim();
-                    email.Text = row["email"].ToString().Trim();
-                    pwd.Text = row["password"].ToString().Trim();
-                    img.Text = row["photo"].ToString().Trim();
-                    Image1.ImageUrl = img.Text;
-                    //no photo yet, hide the broken image
-                    Image1.Visible = img.Text != "";
+                    return;
                 }
+
+                fname.Text = dt.Rows[0][1].ToString();
+                lname.Text = dt.Rows[0][2].ToString();
+                gender.SelectedItem.Text = dt.Rows[0][3].ToString();
+                country.Text = dt.Rows[0][4].ToString();
+                email.Text = dt.Rows[0][5].ToString();
+                pwd.Text = dt.Rows[0][7].ToString();
+                Image1.ImageUrl = dt.Rows[0][9].ToString();
+                img.Text = dt.Rows[0][9].ToString();
             }
         }
 
@@ -98,7 +88,7 @@ namespace WAPP.Lab9
                 cmd.Parameters.AddWithValue("@password", pwd.Text);
                 cmd.Parameters.AddWithValue("@usertype", usertype.Text);
                 cmd.Parameters.AddWithValue("@photo", ImgPath);
-                cmd.Parameters.AddWithValue("@username", Session["userName"].ToString());
+                cmd.Parameters.AddWithValue("@username", Convert.ToString(Session["userName"]));
                 cmd.ExecuteNonQuery();
             }
 
