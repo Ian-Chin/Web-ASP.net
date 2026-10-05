@@ -13,7 +13,7 @@
             <table>
                 <tr>
                     <td><asp:Label ID="uname" runat="server" Text=""></asp:Label></td>
-                    <td><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#">Edit Profile</asp:HyperLink></td>
+                    <td><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Lab9/editUserProfile.aspx">Edit Profile</asp:HyperLink></td>
                     <td><asp:LinkButton ID="LinkButton1" OnCommand="LinkButton1_Command" runat="server">Sign Out</asp:LinkButton></td>
                 </tr>
             </table>

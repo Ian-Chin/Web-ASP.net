@@ -14,6 +14,12 @@ CREATE TABLE dbo.userTable
     email    NVARCHAR(100) NULL,
     username NVARCHAR(100) NOT NULL UNIQUE,
     password NVARCHAR(100) NOT NULL,
-    usertype NVARCHAR(20)  NULL
+    usertype NVARCHAR(20)  NULL,
+    photo    NVARCHAR(255) NULL
 );
+GO
+
+-- Lab 9: profile picture path
+IF COL_LENGTH('dbo.userTable', 'photo') IS NULL
+    ALTER TABLE dbo.userTable ADD photo NVARCHAR(255) NULL;
 GO

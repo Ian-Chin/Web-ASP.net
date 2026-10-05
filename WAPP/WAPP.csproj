@@ -78,6 +78,8 @@
     <Content Include="Lab 6 - 7\memberDashboard.aspx" />
     <Content Include="Lab 6 - 7\memberRegistration.aspx" />
     <Content Include="Lab8\ManageUser.aspx" />
+    <Content Include="Lab9\editAdminProfile.aspx" />
+    <Content Include="Lab9\editUserProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +131,20 @@
     </Compile>
     <Compile Include="Lab8\ManageUser.aspx.designer.cs">
       <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9\editAdminProfile.aspx.cs">
+      <DependentUpon>editAdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lab9\editAdminProfile.aspx.designer.cs">
+      <DependentUpon>editAdminProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9\editUserProfile.aspx.cs">
+      <DependentUpon>editUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lab9\editUserProfile.aspx.designer.cs">
+      <DependentUpon>editUserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
