@@ -28,9 +28,10 @@ namespace WAPP.Lab9
                 con.Open();
 
                 SqlDataAdapter da = new SqlDataAdapter("select * from userTable where username = '" +
-                                                       Session["userName"] + "'", con);
+                                                       Session["firstName"] + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
 
                 fname.Text = dt.Rows[0][1].ToString();
                 lname.Text = dt.Rows[0][2].ToString();
